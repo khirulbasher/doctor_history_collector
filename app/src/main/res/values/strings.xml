@@ -9,4 +9,11 @@
     <string name="SHA1" translatable="false" >05:99:B3:C6:4B:26:D0:A9:96:3C:03:FA:A8:6A:99:D8:36:C2:74:E1</string>
     <string name="doctor_s_point">Doctor\'s Point</string>
     <string name="garland_inc">garland Inc.</string>
+    <string name="add_clinic">Add Clinic</string>
+    <string name="add_doctor">Add Doctor</string>
+    <string name="add_hospital">Add Hospital</string>
+    <string name="tools">Tools</string>
+    <string name="get_location">GET LOCATION</string>
+    <string name="disease">Disease Comma Sep</string>
+    <string name="clinic_name">Clinic Name</string>
 </resources>
