@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "95838803256",
+    "firebase_url": "https://androidproject18.firebaseio.com",
+    "project_id": "androidproject18",
+    "storage_bucket": "androidproject18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95838803256:android:badb1df115a0a2df",
+        "android_client_info": {
+          "package_name": "com.lemon.doctorpointcollector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95838803256-hl59eni07dhsgi0cmd2nn25cks9v68fo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lemon.doctorpointcollector",
+            "certificate_hash": "0599b3c64b26d0a9963c03faa86a99d836c274e1"
+          }
+        },
+        {
+          "client_id": "95838803256-6vanimlhm66cn6ph451b5iekn0mdp5ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL4STi5Fuiac55tXb3T3wfJuzqxMcKl8c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95838803256-6vanimlhm66cn6ph451b5iekn0mdp5ee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
