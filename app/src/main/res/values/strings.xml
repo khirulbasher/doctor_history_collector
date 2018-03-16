@@ -9,11 +9,24 @@
     <string name="SHA1" translatable="false" >05:99:B3:C6:4B:26:D0:A9:96:3C:03:FA:A8:6A:99:D8:36:C2:74:E1</string>
     <string name="doctor_s_point">Doctor\'s Point</string>
     <string name="garland_inc">garland Inc.</string>
-    <string name="add_clinic">Add Clinic</string>
+    <string name="add_clinic">Add Clinic or Hospital</string>
     <string name="add_doctor">Add Doctor</string>
     <string name="add_hospital">Add Hospital</string>
     <string name="tools">Tools</string>
     <string name="get_location">GET LOCATION</string>
     <string name="disease">Disease Comma Sep</string>
-    <string name="clinic_name">Clinic Name</string>
+    <string name="clinic_name">Clinic or Hospital Name</string>
+    <string name="doctor_s_name">Doctor\'s Name</string>
+    <string name="doctor_s_designation">Designation</string>
+    <string name="doctor_for_disease">For Disease</string>
+    <string name="medical_college" >Medical College</string>
+    <string name="doctor_mail">Emaail Address</string>
+    <string name="doctor_s_contact">Contact Number</string>
+    <string name="doctor_s_id">Track ID</string>
+    <string name="doctor">Doctor:</string>
+    <string name="select_division">Select Division</string>
+    <string name="select_district">Select District</string>
+    <string name="save">save</string>
+    <string name="remove_last_doctor">remove last doctor</string>
+    <string name="add_more_doctor">Add More Doctor</string>
 </resources>

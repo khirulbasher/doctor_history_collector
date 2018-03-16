@@ -8,10 +8,9 @@ package com.lemon.doctorpointcollector.entity;
 public class Doctor {
     public String name;
     public String clinic;
-    public String disease;
+    public String diseases;
     public String contact;
     public String mail;
     public String medicalCollege;
     public String doctorId;
-    public String hospital;
 }

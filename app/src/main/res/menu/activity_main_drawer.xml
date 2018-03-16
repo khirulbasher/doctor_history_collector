@@ -12,10 +12,10 @@
             android:id="@+id/nav_add_doctor"
             android:icon="@drawable/ic_add_circle_black_24dp"
             android:title="@string/add_doctor" />
-        <item
+        <!--<item
             android:id="@+id/nav_add_hospital"
             android:icon="@drawable/ic_add_circle_black_24dp"
-            android:title="@string/add_hospital" />
+            android:title="@string/add_hospital" />-->
 
         <item
             android:id="@+id/nav_manage"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_save"
+        android:title="@string/save"
+        android:icon="@drawable/ic_save_black_24dp"/>
+    <item android:icon="@drawable/ic_remove_black_24dp"
+        android:title="@string/remove_last_doctor"
+        android:id="@+id/action_remove"/>
+
+    <item android:id="@+id/action_add"
+        android:title="@string/add_more_doctor"
+        android:icon="@drawable/ic_add_circle_black_24dp"/>
+
+</menu>

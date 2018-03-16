@@ -11,7 +11,7 @@ import java.util.List;
 public class Clinic {
     public String name;
     public Location location;
-    public String[] diseases;
+    public String diseases;
     public List<Doctor> doctors;
 
     public Clinic() {
