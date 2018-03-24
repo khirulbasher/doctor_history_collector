@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.lemon.doctorpointcollector.concurrent.ClientCallback;
 import com.lemon.doctorpointcollector.concurrent.ClientHandler;
+import com.lemon.doctorpointcollector.concurrent.Converter;
 import com.lemon.doctorpointcollector.concurrent.ConverterThread;
 import com.lemon.doctorpointcollector.concurrent.FragmentCallback;
 import com.lemon.doctorpointcollector.concurrent.Task;
@@ -27,6 +28,7 @@ import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
 import com.lemon.doctorpointcollector.utility.fragment.ListFragment;
 import com.lemon.doctorpointcollector.utility.util.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity
                 fragment=new DiseaseSetup();
                 break;
             case R.id.nav_disease_list:
-                fetchAll(Diseases.class,"Disease List");
+                fetchAll(new DiseaseConverter(),Diseases.class,"Disease List");
         }
 
         if(fragment!=null)
@@ -116,19 +118,23 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private <T> void fetchAll(final Class<T> entityClass, String title) {
-        final RealmDatabase realmDatabase=new RealmDatabase();
-        try{
-            new TaskManager(handler, new Task() {
-                @Override
-                public void doTask(ClientCallback clientCallback) {
-                    new ConverterThread<Diseases,Item>(clientCallback,new DiseaseConverter(), realmDatabase.findAllList(entityClass)).start();
+    private <T> void fetchAll(final Converter<T,Item> converter, final Class<T> entityClass, final String title) {
+        new TaskManager(handler, new Task() {
+            @Override
+            public void doTask(ClientCallback clientCallback) {
+                RealmDatabase realmDatabase=new RealmDatabase();
+                try {
+                    final List<T> tList=realmDatabase.findAllList(entityClass);
+                    List<Item> itemList=new ArrayList<>();
+                    for(T t:tList)
+                        itemList.add(converter.convert(t));
+                    MainActivity.this.title=title;
+                    clientCallback.onPrepareCallback(itemList);
+                } finally {
+                    realmDatabase.close();
                 }
-            }).start();
-            this.title=title;
-        } finally {
-            realmDatabase.close();
-        }
+            }
+        }).start();
     }
 
     private void changeFragment(Fragment fragment) {

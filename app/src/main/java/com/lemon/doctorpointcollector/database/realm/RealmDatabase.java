@@ -1,6 +1,7 @@
 package com.lemon.doctorpointcollector.database.realm;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -40,8 +41,8 @@ public class RealmDatabase {
         return this.realm.where(entityClass).findAll();
     }
 
-    public List findAllList(Class entityClass) {
-        return this.realm.where(entityClass).findAll();
+    public <E> List<E> findAllList(Class<E> entityClass) {
+        return new ArrayList<>(this.realm.where((Class)entityClass).findAll());
     }
 
     public Object findOne(Long primaryKay,Class aClass) {

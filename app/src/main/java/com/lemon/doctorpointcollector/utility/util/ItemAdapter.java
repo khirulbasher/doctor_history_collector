@@ -39,6 +39,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Holder> {
         return items.size();
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static class Holder extends RecyclerView.ViewHolder {
 
         public TextView title,subtitle;
