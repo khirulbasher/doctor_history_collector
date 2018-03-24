@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <EditText
+        style="@style/text_field"
+        android:layout_marginTop="20sp"
+        android:hint="@string/disease"
+        android:textSize="23sp"
+        android:id="@+id/disease_field"
+        />
+    <include layout="@layout/type_spinner"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="30sp"
+        android:text="@string/save"
+        android:id="@+id/save_button"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,6 +1,6 @@
 package com.lemon.doctorpointcollector.entity;
 
-import com.lemon.doctorpointcollector.entity.enumeration.ClinicType;
+import com.lemon.doctorpointcollector.entity.enumeration.HospitalType;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -10,15 +10,17 @@ import io.realm.annotations.PrimaryKey;
  * Created by lemon on 3/23/2018.
  */
 
-@SuppressWarnings({"unused", "DefaultFileTemplate"})
-public class Clinic extends RealmObject {
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
+public class Hospital extends RealmObject {
     @PrimaryKey
     private Long id;
+
     private String name;
     private Territory territory;
+    private RealmList<Diseases> diseases;
     private RealmList<Doctor> doctors;
     private RealmList<Contact> contacts;
-    private String clinicType;
+    private String hospitalType;
     private String website;
 
     public Long getId() {
@@ -45,6 +47,14 @@ public class Clinic extends RealmObject {
         this.territory = territory;
     }
 
+    public RealmList<Diseases> getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(RealmList<Diseases> diseases) {
+        this.diseases = diseases;
+    }
+
     public RealmList<Doctor> getDoctors() {
         return doctors;
     }
@@ -61,20 +71,20 @@ public class Clinic extends RealmObject {
         this.contacts = contacts;
     }
 
-    public String getClinicType() {
-        return clinicType;
+    public String getHospitalType() {
+        return hospitalType;
     }
 
-    public void setClinicType(ClinicType clinicType) {
-        this.clinicType = clinicType.name();
-    }
-
-    public void setClinicType(String clinicType) {
-        this.clinicType = clinicType;
+    public void setHospitalType(HospitalType hospitalType) {
+        this.hospitalType = hospitalType.name();
     }
 
     public String getWebsite() {
         return website;
+    }
+
+    public void setHospitalType(String hospitalType) {
+        this.hospitalType = hospitalType;
     }
 
     public void setWebsite(String website) {

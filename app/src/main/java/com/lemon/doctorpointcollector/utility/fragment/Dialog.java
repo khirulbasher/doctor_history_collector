@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
-import com.lemon.doctorpointcollector.utility.util.Callback;
+import com.lemon.doctorpointcollector.utility.util.inf.Callback;
 
 
 /**
@@ -59,14 +59,14 @@ public class Dialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(callback!=null)
-                    callback.onCallback(false);
+                    callback.onCallback(null,false);
                 dismiss();
             }
         }).setPositiveButton(accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(callback!=null)
-                    callback.onCallback(true);
+                    callback.onCallback(null,true);
                 dismiss();
             }
         }).setCancelable(autoCancel).create();

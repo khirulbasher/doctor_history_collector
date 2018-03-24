@@ -3,19 +3,22 @@ package com.lemon.doctorpointcollector.utility.util;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.lemon.doctorpointcollector.R;
 import com.lemon.doctorpointcollector.datastructure.FireList;
+import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
+import com.lemon.doctorpointcollector.entity.enumeration.EmployeeType;
 
+import java.util.Enumeration;
 import java.util.TreeMap;
 
 /**
  * Created by lemon on 3/15/2018.
  */
 
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class Utility {
     private static TreeMap<String,FireList> continent;
 
@@ -42,8 +45,15 @@ public class Utility {
         Log.d("AndroidView","[]"+traceElement.getClassName().substring(traceElement.getClassName().lastIndexOf('.')+1)+":->"+traceElement.getMethodName()+";->"+traceElement.getLineNumber()+":->"+message);
     }
 
-    public static void initCommon(View view, Spinner district, Spinner division) {
-        district=view.findViewById(R.id.district_spinner);
-        division=view.findViewById(R.id.division_spinner);
+    public static <E> Spinner initTypeSpinner(View parent , Context context, Object[] objects) {
+        String[] params=new String[objects.length];
+
+        for(int i=0;i<objects.length;i++)
+            params[i]=objects[i].toString();
+        Spinner spinner=parent.findViewById(R.id.global_type);
+        ArrayAdapter<String> stringArrayAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,params);
+        spinner.setAdapter(stringArrayAdapter);
+
+        return spinner;
     }
 }

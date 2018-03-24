@@ -3,25 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_add_clinic"
-            android:icon="@drawable/ic_add_circle_black_24dp"
-            android:title="@string/add_clinic" />
-        <item
-            android:id="@+id/nav_add_doctor"
-            android:icon="@drawable/ic_add_circle_black_24dp"
-            android:title="@string/add_doctor" />
-        <!--<item
-            android:id="@+id/nav_add_hospital"
-            android:icon="@drawable/ic_add_circle_black_24dp"
-            android:title="@string/add_hospital" />-->
+    <item android:title="@string/setup">
+        <menu>
+            <item android:title="@string/designation_setup"
+                android:icon="@drawable/ic_menu_manage"
+                android:id="@+id/nav_designation_setup"/>
+            <item android:title="@string/disease_setup"
+                android:id="@+id/nav_action_disease_setup"
+                android:icon="@drawable/ic_menu_manage"/>
+            <item android:title="@string/clinic_setup"
+                android:id="@+id/nav_action_clinic_setup"
+                android:icon="@drawable/ic_menu_manage"/>
+            <item android:title="@string/hospital_setup"
+                android:id="@+id/nav_hospital_setup"
+                android:icon="@drawable/ic_menu_manage"/>
+            <item android:title="@string/medical_college_setup"
+                android:id="@+id/nav_mc_setup"
+                android:icon="@drawable/ic_menu_manage"/>
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/tools" />
-    </group>
+    <item android:title="@string/list">
+        <menu>
+            <item android:title="@string/disease"
+                android:icon="@drawable/ic_playlist_add_check_black_24dp"
+                android:id="@+id/nav_disease_list"/>
+        </menu>
+    </item>
 
 
 </menu>

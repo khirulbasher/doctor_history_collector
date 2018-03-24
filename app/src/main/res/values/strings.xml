@@ -14,7 +14,7 @@
     <string name="add_hospital">Add Hospital</string>
     <string name="tools">Tools</string>
     <string name="get_location">GET LOCATION</string>
-    <string name="disease">Disease Comma Sep</string>
+    <string name="disease">Disease Name</string>
     <string name="clinic_name">Clinic or Hospital Name</string>
     <string name="doctor_s_name">Doctor\'s Name</string>
     <string name="doctor_s_designation">Designation</string>
@@ -29,4 +29,11 @@
     <string name="save">save</string>
     <string name="remove_last_doctor">remove last doctor</string>
     <string name="add_more_doctor">Add More Doctor</string>
+    <string name="setup">Setup</string>
+    <string name="designation_setup">Designation Setup</string>
+    <string name="disease_setup">Disease Setup</string>
+    <string name="clinic_setup">Clinic Setup</string>
+    <string name="hospital_setup">Hospital Setup</string>
+    <string name="medical_college_setup">Medical College Setup</string>
+    <string name="list">Saved List</string>
 </resources>
