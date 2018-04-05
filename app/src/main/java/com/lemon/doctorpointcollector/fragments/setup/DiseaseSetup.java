@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.lemon.doctorpointcollector.R;
-import com.lemon.doctorpointcollector.database.realm.RealmDatabase;
+import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
 import com.lemon.doctorpointcollector.utility.util.Utility;

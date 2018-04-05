@@ -1,8 +1,9 @@
 package com.lemon.doctorpointcollector.entity.converter;
 
-import com.lemon.doctorpointcollector.concurrent.AbstractConverter;
+import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.concurrent.AbstractConverter;
 import com.lemon.doctorpointcollector.entity.Diseases;
-import com.lemon.doctorpointcollector.utility.util.Item;
+
 
 /**
  * Created by lemon on 3/24/2018.

@@ -7,11 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.lemon.doctorpointcollector.R;
-import com.lemon.doctorpointcollector.datastructure.FireList;
-import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
-import com.lemon.doctorpointcollector.entity.enumeration.EmployeeType;
+import com.lemon.androidlibs.datastructure.FireList;
 
-import java.util.Enumeration;
 import java.util.TreeMap;
 
 /**

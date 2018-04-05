@@ -1,10 +1,11 @@
 package com.lemon.doctorpointcollector.entity.converter;
 
-import com.lemon.doctorpointcollector.concurrent.Converter;
+
+import com.lemon.androidlibs.concurrent.Converter;
 import com.lemon.doctorpointcollector.entity.Designation;
-import com.lemon.doctorpointcollector.utility.util.Item;
 
 import java.util.ArrayList;
+import com.lemon.androidlibs.utility.recycler.Item;
 import java.util.List;
 
 /**

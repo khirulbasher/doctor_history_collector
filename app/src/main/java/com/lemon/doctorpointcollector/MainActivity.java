@@ -13,20 +13,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.lemon.doctorpointcollector.concurrent.ClientCallback;
-import com.lemon.doctorpointcollector.concurrent.ClientHandler;
-import com.lemon.doctorpointcollector.concurrent.Converter;
-import com.lemon.doctorpointcollector.concurrent.ConverterThread;
-import com.lemon.doctorpointcollector.concurrent.FragmentCallback;
-import com.lemon.doctorpointcollector.concurrent.Task;
-import com.lemon.doctorpointcollector.concurrent.TaskManager;
-import com.lemon.doctorpointcollector.database.realm.RealmDatabase;
+import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.recycler.listener.ItemClickListener;
+import com.lemon.androidlibs.fragment.view.FragmentCallback;
+import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
+import com.lemon.androidlibs.concurrent.ClientCallback;
+import com.lemon.androidlibs.concurrent.ClientHandler;
+import com.lemon.androidlibs.concurrent.Converter;
+import com.lemon.androidlibs.concurrent.Task;
+import com.lemon.androidlibs.concurrent.TaskManager;
+import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.converter.DiseaseConverter;
 import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
-import com.lemon.doctorpointcollector.utility.fragment.ListFragment;
-import com.lemon.doctorpointcollector.utility.util.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ import java.util.Map;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-@SuppressWarnings({"unchecked", "ControlFlowStatementWithoutBraces"})
+@SuppressWarnings({"unchecked", "ControlFlowStatementWithoutBraces", "unused", "SameParameterValue"})
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,ClientCallback,FragmentCallback {
 
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private <T> void fetchAll(final Converter<T,Item> converter, final Class<T> entityClass, final String title) {
+    private <T> void fetchAll(final Converter<T,Item> converter, final Class<T> entityClass, String title) {
         new TaskManager(handler, new Task() {
             @Override
             public void doTask(ClientCallback clientCallback) {
@@ -128,7 +130,6 @@ public class MainActivity extends AppCompatActivity
                     List<Item> itemList=new ArrayList<>();
                     for(T t:tList)
                         itemList.add(converter.convert(t));
-                    MainActivity.this.title=title;
                     clientCallback.onPrepareCallback(itemList);
                 } finally {
                     realmDatabase.close();
@@ -156,13 +157,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onPrepareCallback(List<Item> items) {
         this.itemList=items;
-        changeTitle();
-        changeFragment(new ListFragment());
+        changeFragment(new RecyclerViewFragment());
     }
 
-    private void changeTitle() {
-        getSupportActionBar().setTitle(title);
-    }
 
     @Override
     public List<Item> getItems() {
@@ -170,13 +167,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public String title() {
-        return this.title;
-    }
+    public ItemClickListener getListener() {
+        return new ItemClickListener() {
+            @Override
+            public void onClickListener(View view, int position) {
+                Toast.makeText(MainActivity.this, "Click On Position"+position, Toast.LENGTH_SHORT).show();
+            }
 
-    @Override
-    protected void onResume() {
-        getSupportActionBar().setTitle(R.string.app_name);
-        super.onResume();
+            @Override
+            public void onLongClickListener(View view, int position) {
+
+            }
+        };
     }
 }
