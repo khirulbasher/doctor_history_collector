@@ -36,4 +36,7 @@
     <string name="hospital_setup">Hospital Setup</string>
     <string name="medical_college_setup">Medical College Setup</string>
     <string name="list">Saved List</string>
+    <string name="medical_college_name">Medical College Name</string>
+    <string name="select_territory">Select Territory</string>
+    <string name="website_url">Website Url</string>
 </resources>

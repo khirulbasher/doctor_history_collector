@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button android:background="@drawable/button_pressed"
+    android:textColor="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30sp"
+    android:text="@string/save"
+    android:id="@+id/save_button"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

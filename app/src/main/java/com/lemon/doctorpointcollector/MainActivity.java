@@ -26,11 +26,15 @@ import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
 import com.lemon.androidlibs.utility.recycler.Item;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.doctorpointcollector.entity.Diseases;
+import com.lemon.doctorpointcollector.entity.MedicalCollege;
 import com.lemon.doctorpointcollector.entity.callbacks.DiseaseClickCallback;
+import com.lemon.doctorpointcollector.entity.callbacks.MedicalCollegeClickCallback;
 import com.lemon.doctorpointcollector.entity.converter.DiseaseConverter;
 import com.lemon.androidlibs.fragment.view.FragmentConversation;
 import com.lemon.androidlibs.utility.enumeration.Why;
+import com.lemon.doctorpointcollector.entity.converter.MedicalCollegeConverter;
 import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
+import com.lemon.doctorpointcollector.fragments.setup.MedicalCollegeSetup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,6 +117,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_disease_list:
                 fetchAll(new DiseaseConverter(),Diseases.class,new DiseaseClickCallback(this));
+                break;
+            case R.id.nav_mc_setup:
+                fragment=new MedicalCollegeSetup();
+                break;
+            case R.id.nav_mc_list:
+                fetchAll(new MedicalCollegeConverter(), MedicalCollege.class,new MedicalCollegeClickCallback(this));
         }
 
         if(fragment!=null)

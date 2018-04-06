@@ -40,7 +40,7 @@ public class DiseaseSetup extends Fragment {
             }
         });
         realmDatabase=new RealmDatabase();
-        spinner= Utility.initTypeSpinner(view,getActivity(), DiseaseType.values());
+        spinner= Utility.initTypeSpinner(view,getActivity(), DiseaseType.values(),"Disease Type");
         return view;
     }
 

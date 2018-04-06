@@ -18,7 +18,7 @@ public class DiseaseClickCallback implements ItemClickCallback {
     }
 
     @Override
-    public void onCallback(Item item) {
+    public void onCallback(Item item,Why why) {
         conversation.onConversation(this.getClass(), Why.SHOW_TOAST, Utility.getWhyMap(Why.TOAST,"Click On Disease Item:"+item.toString()));
     }
 }

@@ -3,31 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="@string/setup">
+    <item android:title="@string/setup"
+        >
         <menu>
-            <item android:title="@string/designation_setup"
-                android:icon="@drawable/ic_menu_manage"
-                android:id="@+id/nav_designation_setup"/>
-            <item android:title="@string/disease_setup"
-                android:id="@+id/nav_action_disease_setup"
-                android:icon="@drawable/ic_menu_manage"/>
-            <item android:title="@string/clinic_setup"
-                android:id="@+id/nav_action_clinic_setup"
-                android:icon="@drawable/ic_menu_manage"/>
-            <item android:title="@string/hospital_setup"
-                android:id="@+id/nav_hospital_setup"
-                android:icon="@drawable/ic_menu_manage"/>
-            <item android:title="@string/medical_college_setup"
-                android:id="@+id/nav_mc_setup"
-                android:icon="@drawable/ic_menu_manage"/>
+            <group android:checkableBehavior="single">
+                <item android:title="@string/designation_setup"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:id="@+id/nav_designation_setup"/>
+                <item android:title="@string/disease_setup"
+                    android:id="@+id/nav_action_disease_setup"
+                    android:icon="@drawable/ic_menu_manage"/>
+                <item android:title="@string/clinic_setup"
+                    android:id="@+id/nav_action_clinic_setup"
+                    android:icon="@drawable/ic_menu_manage"/>
+                <item android:title="@string/hospital_setup"
+                    android:id="@+id/nav_hospital_setup"
+                    android:icon="@drawable/ic_menu_manage"/>
+                <item android:title="@string/medical_college_setup"
+                    android:id="@+id/nav_mc_setup"
+                    android:icon="@drawable/ic_menu_manage"/>
+            </group>
         </menu>
     </item>
 
     <item android:title="@string/list">
         <menu>
-            <item android:title="@string/disease"
-                android:icon="@drawable/ic_playlist_add_check_black_24dp"
-                android:id="@+id/nav_disease_list"/>
+            <group android:checkableBehavior="single">
+                <item android:title="@string/disease"
+                    android:icon="@drawable/ic_playlist_add_check_black_24dp"
+                    android:id="@+id/nav_disease_list"/>
+                <item android:title="@string/medical_college"
+                    android:icon="@drawable/ic_playlist_add_check_black_24dp"
+                    android:id="@+id/nav_mc_list"/>
+            </group>
         </menu>
     </item>
 

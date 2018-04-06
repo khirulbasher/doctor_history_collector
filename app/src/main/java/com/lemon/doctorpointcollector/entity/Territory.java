@@ -2,7 +2,6 @@ package com.lemon.doctorpointcollector.entity;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmField;
 
 /**
  * Created by lemon on 3/23/2018.
@@ -12,16 +11,32 @@ import io.realm.annotations.RealmField;
 public class Territory extends RealmObject {
     @PrimaryKey
     private Long id;
-    private String District;
+    private String district;
     private Double latitude;
     private Double longitude;
 
+    public Territory() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Territory(String district) {
+        setDistrict(district);
+        setId(System.currentTimeMillis());
+    }
+
     public String getDistrict() {
-        return District;
+        return district;
     }
 
     public void setDistrict(String district) {
-        District = district;
+        this.district = district;
     }
 
     public Double getLatitude() {
@@ -39,4 +54,5 @@ public class Territory extends RealmObject {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
+
 }

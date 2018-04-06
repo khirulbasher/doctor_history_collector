@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/mc_name"
+        android:hint="@string/medical_college_name"
+        style="@style/text_field" />
+    <EditText
+        android:id="@+id/mc_website"
+        android:hint="@string/website_url"
+        style="@style/text_field" />
+    <include layout="@layout/type_spinner"/>
+
+    <include layout="@layout/spinners"/>
+
+    <include layout="@layout/save_button"/>
+
+</LinearLayout>

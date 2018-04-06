@@ -1,5 +1,6 @@
 package com.lemon.androidlibs.utility.recycler.listener;
 
+import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.androidlibs.utility.recycler.Item;
 
 /**
@@ -7,5 +8,5 @@ import com.lemon.androidlibs.utility.recycler.Item;
  */
 
 public interface ItemClickCallback {
-    void onCallback(Item item);
+    void onCallback(Item item, Why why);
 }

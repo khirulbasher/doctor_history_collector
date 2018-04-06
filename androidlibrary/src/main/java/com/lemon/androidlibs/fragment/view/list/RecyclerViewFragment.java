@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.lemon.androidlibs.R;
+import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.androidlibs.utility.recycler.Item;
 import com.lemon.androidlibs.utility.recycler.RecyclerAdapter;
 import com.lemon.androidlibs.utility.recycler.RecyclerListener;
@@ -94,7 +95,7 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
 
     @Override
     public void onClickListener(View view, int position) {
-        itemClickCallback.onCallback(items.get(position));
+        itemClickCallback.onCallback(items.get(position), Why.FROM_LIST_VIEW);
     }
 
     @Override

@@ -2,10 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/global_spinner_text"
+        android:gravity="center"
+        android:layout_marginTop="10sp"
+        android:layout_height="wrap_content" />
     <Spinner
         android:layout_width="match_parent"
         android:id="@+id/global_type"
-        android:layout_marginTop="20sp"
         android:layout_height="wrap_content">
     </Spinner>
 

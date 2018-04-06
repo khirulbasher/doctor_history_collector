@@ -12,6 +12,6 @@ import com.lemon.doctorpointcollector.entity.Diseases;
 public class DiseaseConverter extends AbstractConverter<Diseases,Item> {
     @Override
     public Item convert(Diseases item) {
-        return new Item(item.getId(), item.getDisease(),"Primary Key:"+item.getId());
+        return new Item(item.getId(), item.getDisease(), item.getDiseaseType());
     }
 }

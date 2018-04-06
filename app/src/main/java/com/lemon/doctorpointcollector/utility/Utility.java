@@ -3,8 +3,11 @@ package com.lemon.doctorpointcollector.utility;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.lemon.doctorpointcollector.R;
 import com.lemon.androidlibs.datastructure.FireList;
@@ -45,9 +48,9 @@ public class Utility {
         Log.d("AndroidView","[]"+traceElement.getClassName().substring(traceElement.getClassName().lastIndexOf('.')+1)+":->"+traceElement.getMethodName()+";->"+traceElement.getLineNumber()+":->"+message);
     }
 
-    public static <E> Spinner initTypeSpinner(View parent , Context context, Object[] objects) {
+    public static <E> Spinner initTypeSpinner(View parent , Context context, Object[] objects, String title) {
         String[] params=new String[objects.length];
-
+        ((TextView)parent.findViewById(R.id.global_spinner_text)).setText(title);
         for(int i=0;i<objects.length;i++)
             params[i]=objects[i].toString();
         Spinner spinner=parent.findViewById(R.id.global_type);
@@ -57,9 +60,40 @@ public class Utility {
         return spinner;
     }
 
+    public static Spinner initSpinner(Spinner division, final Context context, View parent) {
+        final Spinner finalDistrict=parent.findViewById(R.id.district_spinner);
+        division=parent.findViewById(R.id.division_spinner);
+
+        ArrayAdapter<String> divisionAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,getContinent().keySet().toArray(new String[0]));
+        division.setAdapter(divisionAdapter);
+        ArrayAdapter<String> districtAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,getContinent().get(division.getSelectedItem().toString()));
+        finalDistrict.setAdapter(districtAdapter);
+
+        final Spinner finalDivision = division;
+        division.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayAdapter<String> districtAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,getContinent().get(finalDivision.getSelectedItem().toString()));
+                finalDistrict.setAdapter(districtAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        return finalDistrict;
+    }
+
     public static Map<Why,Object> getWhyMap(Why why,Object obj) {
         Map<Why,Object> whyObjectMap=new HashMap<>();
         whyObjectMap.put(why,obj);
         return whyObjectMap;
+    }
+
+    public static void initSaveButton(View view, View.OnClickListener onClickListener) {
+        view.findViewById(R.id.save_button).setOnClickListener(onClickListener);
+
     }
 }

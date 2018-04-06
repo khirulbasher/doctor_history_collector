@@ -62,4 +62,8 @@ public class MedicalCollege extends RealmObject {
         this.medicalCollegeType = medicalCollegeType.name();
     }
 
+    public boolean isValidObj() {
+        return name!=null&&medicalCollegeType!=null&&!name.isEmpty()&&!medicalCollegeType.isEmpty();
+    }
+
 }
