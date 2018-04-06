@@ -85,14 +85,4 @@ public class RecyclerListener {
 
         }
     }
-
-    public static abstract class ClickListener implements ItemClickListener {
-        @Override
-        public abstract void onClickListener(View view,int position);
-    }
-
-    public static abstract class LongClickListener implements ItemClickListener {
-        @Override
-        public abstract void onLongClickListener(View view,int position);
-    }
 }

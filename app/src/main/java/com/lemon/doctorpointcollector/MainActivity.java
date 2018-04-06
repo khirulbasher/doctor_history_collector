@@ -13,21 +13,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.lemon.androidlibs.utility.recycler.Item;
-import com.lemon.androidlibs.utility.recycler.listener.ItemClickListener;
-import com.lemon.androidlibs.fragment.view.FragmentCallback;
-import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
 import com.lemon.androidlibs.concurrent.ClientCallback;
 import com.lemon.androidlibs.concurrent.ClientHandler;
 import com.lemon.androidlibs.concurrent.Converter;
 import com.lemon.androidlibs.concurrent.Task;
 import com.lemon.androidlibs.concurrent.TaskManager;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
+import com.lemon.androidlibs.fragment.view.FragmentCallback;
+import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
+import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.doctorpointcollector.entity.Diseases;
+import com.lemon.doctorpointcollector.entity.callbacks.DiseaseClickCallback;
 import com.lemon.doctorpointcollector.entity.converter.DiseaseConverter;
+import com.lemon.androidlibs.fragment.view.FragmentConversation;
+import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
 
 import java.util.ArrayList;
@@ -39,11 +41,12 @@ import io.realm.RealmConfiguration;
 
 @SuppressWarnings({"unchecked", "ControlFlowStatementWithoutBraces", "unused", "SameParameterValue"})
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ClientCallback,FragmentCallback {
+        implements NavigationView.OnNavigationItemSelectedListener,ClientCallback,FragmentCallback, FragmentConversation {
 
     private Handler handler;
     private List<Item> itemList;
     private String title;
+    private ItemClickCallback itemClickCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity
                 fragment=new DiseaseSetup();
                 break;
             case R.id.nav_disease_list:
-                fetchAll(new DiseaseConverter(),Diseases.class,"Disease List");
+                fetchAll(new DiseaseConverter(),Diseases.class,new DiseaseClickCallback(this));
         }
 
         if(fragment!=null)
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private <T> void fetchAll(final Converter<T,Item> converter, final Class<T> entityClass, String title) {
+    private <T> void fetchAll(final Converter<T,Item> converter, final Class<T> entityClass, final ItemClickCallback itemClickCallback) {
         new TaskManager(handler, new Task() {
             @Override
             public void doTask(ClientCallback clientCallback) {
@@ -131,6 +134,7 @@ public class MainActivity extends AppCompatActivity
                     for(T t:tList)
                         itemList.add(converter.convert(t));
                     clientCallback.onPrepareCallback(itemList);
+                    MainActivity.this.itemClickCallback=itemClickCallback;
                 } finally {
                     realmDatabase.close();
                 }
@@ -167,17 +171,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public ItemClickListener getListener() {
-        return new ItemClickListener() {
-            @Override
-            public void onClickListener(View view, int position) {
-                Toast.makeText(MainActivity.this, "Click On Position"+position, Toast.LENGTH_SHORT).show();
-            }
+    public ItemClickCallback getListener() {
+        return this.itemClickCallback;
+    }
 
-            @Override
-            public void onLongClickListener(View view, int position) {
+    @Override
+    public FragmentConversation getFragmentConversation() {
+        return this;
+    }
 
-            }
-        };
+    @Override
+    public void onConversation(Class entityClass, Why why, Map<Why, Object> whyObjectMap) {
+        switch (why) {
+            case SHOW_TOAST:
+                showToast((String) whyObjectMap.get(Why.TOAST));
+                break;
+        }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

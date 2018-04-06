@@ -1,5 +1,7 @@
 package com.lemon.androidlibs.fragment.view.list;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,12 +13,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lemon.androidlibs.R;
 import com.lemon.androidlibs.utility.recycler.Item;
 import com.lemon.androidlibs.utility.recycler.RecyclerAdapter;
 import com.lemon.androidlibs.utility.recycler.RecyclerListener;
 import com.lemon.androidlibs.utility.recycler.divider.RecyclerDivider;
+import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickListener;
 import com.lemon.androidlibs.fragment.view.FragmentCallback;
 
@@ -32,13 +36,13 @@ import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
  */
 
 @SuppressWarnings({"unused", "DefaultFileTemplate", "FieldCanBeLocal"})
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements ItemClickListener {
     private View mainView;
     private RecyclerView recyclerView;
     private List<Item> items;
     private RecyclerAdapter recyclerAdapter;
     private boolean verticalScroll=true;
-    private ItemClickListener itemClickListener;
+    private ItemClickCallback itemClickCallback;
 
     @Nullable
     @Override
@@ -53,7 +57,7 @@ public class RecyclerViewFragment extends Fragment {
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
         d("listener Added");
-        recyclerView.addOnItemTouchListener(new RecyclerListener.TouchListener(itemClickListener,getContext(),recyclerView));
+        recyclerView.addOnItemTouchListener(new RecyclerListener.TouchListener(this,getContext(),recyclerView));
         return this.mainView;
     }
 
@@ -84,7 +88,20 @@ public class RecyclerViewFragment extends Fragment {
     public void onAttach(Context context) {
         FragmentCallback fragmentCallback= (FragmentCallback) context;
         this.items=fragmentCallback.getItems();
-        this.itemClickListener=fragmentCallback.getListener();
+        this.itemClickCallback=fragmentCallback.getListener();
         super.onAttach(context);
+    }
+
+    @Override
+    public void onClickListener(View view, int position) {
+        itemClickCallback.onCallback(items.get(position));
+    }
+
+    @Override
+    public void onLongClickListener(View view, int position) {
+        ClipboardManager clipboardManager= (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData=ClipData.newPlainText("clip_label",""+items.get(position).primaryKey);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getActivity(), "Primary Key Copied To Clip Board", Toast.LENGTH_SHORT).show();
     }
 }

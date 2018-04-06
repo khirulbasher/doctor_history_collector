@@ -14,7 +14,7 @@ import com.lemon.doctorpointcollector.R;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
-import com.lemon.doctorpointcollector.utility.util.Utility;
+import com.lemon.doctorpointcollector.utility.Utility;
 
 /**
  * Created by lemon on 3/23/2018.
@@ -40,7 +40,7 @@ public class DiseaseSetup extends Fragment {
             }
         });
         realmDatabase=new RealmDatabase();
-        spinner=Utility.initTypeSpinner(view,getActivity(), DiseaseType.values());
+        spinner= Utility.initTypeSpinner(view,getActivity(), DiseaseType.values());
         return view;
     }
 

@@ -1,4 +1,4 @@
-package com.lemon.doctorpointcollector.utility.util;
+package com.lemon.doctorpointcollector.utility;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,7 +8,10 @@ import android.widget.Spinner;
 
 import com.lemon.doctorpointcollector.R;
 import com.lemon.androidlibs.datastructure.FireList;
+import com.lemon.androidlibs.utility.enumeration.Why;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -52,5 +55,11 @@ public class Utility {
         spinner.setAdapter(stringArrayAdapter);
 
         return spinner;
+    }
+
+    public static Map<Why,Object> getWhyMap(Why why,Object obj) {
+        Map<Why,Object> whyObjectMap=new HashMap<>();
+        whyObjectMap.put(why,obj);
+        return whyObjectMap;
     }
 }

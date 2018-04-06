@@ -2,7 +2,7 @@ package com.lemon.androidlibs.fragment.view;
 
 
 import com.lemon.androidlibs.utility.recycler.Item;
-import com.lemon.androidlibs.utility.recycler.listener.ItemClickListener;
+import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 
 import java.util.List;
 
@@ -13,5 +13,6 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public interface FragmentCallback {
     List<Item> getItems();
-    ItemClickListener getListener();
+    ItemClickCallback getListener();
+    FragmentConversation getFragmentConversation();
 }

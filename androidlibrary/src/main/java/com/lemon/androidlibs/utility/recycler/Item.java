@@ -14,4 +14,13 @@ public class Item {
         this.title = title;
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "primaryKey=" + primaryKey +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
