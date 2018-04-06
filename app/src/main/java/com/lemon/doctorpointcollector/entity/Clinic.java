@@ -20,6 +20,7 @@ public class Clinic extends RealmObject {
     private RealmList<Contact> contacts;
     private String clinicType;
     private String website;
+    private boolean persisted;
 
     public Long getId() {
         return id;
@@ -79,5 +80,13 @@ public class Clinic extends RealmObject {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 }

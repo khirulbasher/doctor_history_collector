@@ -14,7 +14,6 @@ import io.realm.annotations.PrimaryKey;
 public class Hospital extends RealmObject {
     @PrimaryKey
     private Long id;
-
     private String name;
     private Territory territory;
     private RealmList<Diseases> diseases;
@@ -22,6 +21,7 @@ public class Hospital extends RealmObject {
     private RealmList<Contact> contacts;
     private String hospitalType;
     private String website;
+    private boolean persisted;
 
     public Long getId() {
         return id;
@@ -89,5 +89,13 @@ public class Hospital extends RealmObject {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 }

@@ -18,6 +18,7 @@ public class MedicalCollege extends RealmObject {
     private Territory territory;
     private String website;
     private String medicalCollegeType;
+    private boolean persisted;
 
     public Long getId() {
         return id;
@@ -66,4 +67,11 @@ public class MedicalCollege extends RealmObject {
         return name!=null&&medicalCollegeType!=null&&!name.isEmpty()&&!medicalCollegeType.isEmpty();
     }
 
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
+    }
 }

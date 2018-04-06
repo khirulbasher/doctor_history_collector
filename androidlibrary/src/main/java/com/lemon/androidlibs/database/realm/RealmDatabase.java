@@ -46,8 +46,8 @@ public class RealmDatabase {
         return new ArrayList<>(this.realm.where((Class)entityClass).findAll());
     }
 
-    public Object findOne(Long primaryKay,Class aClass) {
-        return this.realm.where(aClass).equalTo("id",primaryKay).findFirst();
+    public Object findOne(Long primaryKay,Class clazz) {
+        return this.realm.where(clazz).equalTo("id",primaryKay).findFirst();
     }
 
     public boolean delete(Class clazz,Long primaryKey) {

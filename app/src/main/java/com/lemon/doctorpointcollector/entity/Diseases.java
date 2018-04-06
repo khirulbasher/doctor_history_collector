@@ -15,6 +15,7 @@ public class Diseases extends RealmObject {
     private Long id;
     private String disease;
     private String diseaseType;
+    private boolean persisted;
 
     public Diseases() {
     }
@@ -50,5 +51,13 @@ public class Diseases extends RealmObject {
 
     public void setDiseaseType(DiseaseType diseaseType) {
         this.diseaseType = diseaseType.name();
+    }
+
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 }

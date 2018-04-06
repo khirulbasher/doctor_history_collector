@@ -14,6 +14,7 @@ public class Territory extends RealmObject {
     private String district;
     private Double latitude;
     private Double longitude;
+    private boolean persisted;
 
     public Territory() {
     }
@@ -55,4 +56,11 @@ public class Territory extends RealmObject {
         this.longitude = longitude;
     }
 
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
+    }
 }

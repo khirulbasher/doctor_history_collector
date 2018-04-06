@@ -22,6 +22,7 @@ public class Doctor extends RealmObject {
     private RealmList<Clinic> clinics;
     private RealmList<Hospital> hospitals;
     private String employeeType;
+    private boolean persisted;
 
     public Long getId() {
         return id;
@@ -97,5 +98,13 @@ public class Doctor extends RealmObject {
 
     public void setEmployeeType(String employeeType) {
         this.employeeType = employeeType;
+    }
+
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 }

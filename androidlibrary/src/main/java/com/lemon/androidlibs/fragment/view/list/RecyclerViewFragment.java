@@ -39,13 +39,11 @@ import java.util.List;
 import static android.support.v7.widget.LinearLayoutManager.HORIZONTAL;
 import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
 
-
-
 /**
  * Created by lemon on 2/16/2018.
  */
 
-@SuppressWarnings({"unused", "DefaultFileTemplate", "FieldCanBeLocal", "ConstantConditions"})
+@SuppressWarnings({"unused", "DefaultFileTemplate", "FieldCanBeLocal", "ConstantConditions", "StatementWithEmptyBody"})
 public class RecyclerViewFragment extends Fragment implements ItemClickListener {
     private View mainView;
     private RecyclerView recyclerView;
@@ -141,15 +139,15 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                int i = menuItem.getItemId();
-                if (i == R.id.popup_clipboard) {
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.popup_clipboard) {
                     ClipboardManager clipboardManager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                     ClipData clipData = ClipData.newPlainText("clip_label", "" + items.get(position).primaryKey);
                     clipboardManager.setPrimaryClip(clipData);
                     Toast.makeText(getActivity(), "Primary Key Copied To Clip Board", Toast.LENGTH_SHORT).show();
                     return true;
                 }
-                else if(i==R.id.popup_delete) {
+                else if(itemId==R.id.popup_delete) {
                     new Dialog().setAccept("Delete").setTitle("User Delete Confirmation").setCallback(new Callback<Object>() {
                         @Override
                         public void onCallback(Object send, boolean accept) {
@@ -163,6 +161,16 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
                         }
                     }).show(getActivity().getSupportFragmentManager(),"");
                     return true;
+                }
+                else if(itemId==R.id.popup_persist_on_firebase) {
+                    /*
+                    * TODO: Firebase Persist One Item ...
+                    * */
+                }
+                else if(itemId==R.id.popup_all_persist_on_firebase) {
+                    /*
+                    * TODO: Firebase Persist All Item ...
+                    * */
                 }
                 return false;
             }

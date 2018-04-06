@@ -4,4 +4,6 @@
     <string name="search">Search Name</string>
     <string name="clip_item">Clip Item</string>
     <string name="delete_item">Delete Item</string>
+    <string name="upload_to_cloud">Upload To Cloud</string>
+    <string name="upload_all_to_cloud">Upload All To Cloud</string>
 </resources>

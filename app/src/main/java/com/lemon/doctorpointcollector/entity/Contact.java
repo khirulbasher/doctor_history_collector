@@ -14,6 +14,7 @@ public class Contact extends RealmObject {
     private String phone;
     private String mail;
     private String facebookId;
+    private boolean persisted;
 
     public Long getId() {
         return id;
@@ -45,5 +46,13 @@ public class Contact extends RealmObject {
 
     public void setFacebookId(String facebookId) {
         this.facebookId = facebookId;
+    }
+
+    public boolean isPersisted() {
+        return persisted;
+    }
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 }
