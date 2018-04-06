@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 
 
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 
 import java.util.List;
 

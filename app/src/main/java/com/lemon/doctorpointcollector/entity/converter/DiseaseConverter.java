@@ -1,6 +1,6 @@
 package com.lemon.doctorpointcollector.entity.converter;
 
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 import com.lemon.androidlibs.concurrent.AbstractConverter;
 import com.lemon.doctorpointcollector.entity.Diseases;
 

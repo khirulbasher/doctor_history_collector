@@ -1,7 +1,7 @@
 package com.lemon.androidlibs.concurrent;
 
 
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickListener;
 import java.util.List;
 

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AndroidLibs</string>
     <string name="clip_label">clip_label</string>
+    <string name="search">Search Name</string>
+    <string name="clip_item">Clip Item</string>
+    <string name="delete_item">Delete Item</string>
 </resources>

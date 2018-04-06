@@ -15,14 +15,14 @@ import com.lemon.androidlibs.utility.inf.Callback;
 
 @SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class Dialog extends DialogFragment {
-    private Callback<Boolean> callback;
+    private Callback<Object> callback;
     private String title="User Confirmation";
     private String message ="Are You Sure?";
     private String reject="Reject";
     private String accept="Accept";
     private boolean autoCancel=false;
 
-    public Dialog setCallback(Callback<Boolean> callback) {
+    public Dialog setCallback(Callback<Object> callback) {
         this.callback=callback;
         return this;
     }

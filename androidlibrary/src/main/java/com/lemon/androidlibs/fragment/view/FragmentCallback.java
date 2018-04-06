@@ -1,7 +1,7 @@
 package com.lemon.androidlibs.fragment.view;
 
 
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 
 import java.util.List;

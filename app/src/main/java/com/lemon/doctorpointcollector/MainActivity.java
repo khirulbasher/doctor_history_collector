@@ -23,7 +23,7 @@ import com.lemon.androidlibs.concurrent.TaskManager;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.androidlibs.fragment.view.FragmentCallback;
 import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.MedicalCollege;

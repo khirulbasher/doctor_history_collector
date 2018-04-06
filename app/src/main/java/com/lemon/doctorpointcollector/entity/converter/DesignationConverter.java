@@ -5,7 +5,7 @@ import com.lemon.androidlibs.concurrent.Converter;
 import com.lemon.doctorpointcollector.entity.Designation;
 
 import java.util.ArrayList;
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 import java.util.List;
 
 /**

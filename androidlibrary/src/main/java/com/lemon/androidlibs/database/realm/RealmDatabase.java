@@ -6,6 +6,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
@@ -47,5 +48,18 @@ public class RealmDatabase {
 
     public Object findOne(Long primaryKay,Class aClass) {
         return this.realm.where(aClass).equalTo("id",primaryKay).findFirst();
+    }
+
+    public boolean delete(Class clazz,Long primaryKey) {
+        try {
+            RealmResults<RealmObject> realmObjects=realm.where(clazz).equalTo("id",primaryKey).findAll();
+            realm.beginTransaction();
+            realmObjects.deleteAllFromRealm();
+            realm.commitTransaction();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

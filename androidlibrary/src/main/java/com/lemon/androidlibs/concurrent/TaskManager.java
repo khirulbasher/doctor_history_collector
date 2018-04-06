@@ -3,7 +3,7 @@ package com.lemon.androidlibs.concurrent;
 import android.os.Handler;
 
 
-import com.lemon.androidlibs.utility.recycler.Item;
+import com.lemon.androidlibs.utility.Item;
 
 import java.util.List;
 import java.util.Map;
