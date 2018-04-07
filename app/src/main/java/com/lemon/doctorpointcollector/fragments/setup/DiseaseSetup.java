@@ -1,5 +1,6 @@
 package com.lemon.doctorpointcollector.fragments.setup;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.lemon.doctorpointcollector.R;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
+import com.lemon.doctorpointcollector.fragments.callback.SetupCallback;
 import com.lemon.doctorpointcollector.utility.Utility;
 
 /**
@@ -27,6 +29,7 @@ public class DiseaseSetup extends Fragment {
     private RealmDatabase realmDatabase;
     private Spinner spinner;
     private Diseases diseasesSetup;
+    private SetupCallback setupCallback;
 
     @Nullable
     @Override
@@ -42,6 +45,7 @@ public class DiseaseSetup extends Fragment {
                     if(diseasesSetup.getId()==null)
                         save(diseasesSetup);
                     else update(diseasesSetup);
+                    diseasesSetup=new Diseases();
                 }
             }
         });
@@ -57,13 +61,20 @@ public class DiseaseSetup extends Fragment {
 
     private void update(Diseases diseasesSetup) {
         realmDatabase.update(diseasesSetup.getId(),diseasesSetup,diseasesSetup.getClass());
-        clearScr("Disease has been saved Successfully");
+        clearScr("Disease has been Updated Successfully");
     }
 
     private void save(Diseases diseasesSetup) {
         diseasesSetup.setId(System.currentTimeMillis());
         realmDatabase.persist(diseasesSetup);
         clearScr("Disease has been saved Successfully");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        setupCallback=(SetupCallback)context;
+        diseasesSetup= (Diseases) setupCallback.getRenderingObject();
+        super.onAttach(context);
     }
 
     private void clearScr(@Nullable String msg) {

@@ -20,6 +20,7 @@ public class RealmDatabase {
     }
 
     public RealmObject persist(final RealmObject realmObject) {
+
         this.realm.beginTransaction();
         final RealmObject object = realm.copyToRealm(realmObject);
         this.realm.commitTransaction();

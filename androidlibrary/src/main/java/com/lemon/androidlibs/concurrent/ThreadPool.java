@@ -44,11 +44,12 @@ public class ThreadPool extends Thread implements OnTaskCompleteListener {
     }
 
     @Override
-    public synchronized void complete(Long id) {
+    public void complete(Long id) {
         synchronized (lock) {
             totalJob--;
             if(totalJob<=0)
                 lock.notifyAll();
+            interrupt();
         }
     }
 }

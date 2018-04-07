@@ -32,7 +32,7 @@
     <item android:title="@string/list">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:title="@string/disease"
+                <item android:title="@string/diseases"
                     android:icon="@drawable/ic_playlist_add_check_black_24dp"
                     android:id="@+id/nav_disease_list"/>
                 <item android:title="@string/medical_college"

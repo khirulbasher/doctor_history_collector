@@ -43,4 +43,8 @@
     <string name="doctor_name">Doctor Name</string>
     <string name="sub">-</string>
     <string name="doctor_setup">Doctor Setup</string>
+    <string name="add_new">Add New</string>
+    <string name="delete_last_entry">Delete Last Entry</string>
+    <string name="delete_first_entry">Delete First Entry</string>
+    <string name="diseases">Diseases</string>
 </resources>

@@ -61,7 +61,7 @@ public class MedicalCollegeSetup extends Fragment {
                         if(medicalCollege.getId()==null)
                             save(medicalCollege);
                         else update(medicalCollege);
-
+                        medicalCollege=new MedicalCollege();
                     }
                     else clearScr(null);
                 } catch (Exception e) {

@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity
         switch (why) {
             case SETUP:
                 changeFragment(fragment);
+                this.renderingObject=renderingObject;
                 break;
             case DETAILS:
                 try {
@@ -216,7 +217,6 @@ public class MainActivity extends AppCompatActivity
                 changeFragment(new RecyclerViewFragment());
                 break;
         }
-        this.renderingObject=renderingObject;
     }
 
     private void showDialog(String message) {
