@@ -1,6 +1,5 @@
 package com.lemon.androidlibs.database.realm;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
