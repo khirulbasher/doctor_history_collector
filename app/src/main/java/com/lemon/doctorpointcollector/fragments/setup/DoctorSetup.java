@@ -20,7 +20,9 @@ import com.lemon.androidlibs.concurrent.CustomRunnable;
 import com.lemon.androidlibs.concurrent.Task;
 import com.lemon.androidlibs.concurrent.ThreadPool;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
+import com.lemon.androidlibs.utility.fragment.Dialog;
 import com.lemon.androidlibs.utility.fragment.SimpleDialog;
+import com.lemon.androidlibs.utility.inf.Callback;
 import com.lemon.androidlibs.utility.item.Item;
 import com.lemon.androidlibs.utility.list.FilterAdapter;
 import com.lemon.doctorpointcollector.R;
@@ -158,12 +160,12 @@ public class DoctorSetup extends Fragment {
                                     break;
                                 case R.id.popup_delete_first_entry:
                                     if(realmList.size()>0)
-                                        realmList.remove(0);
+                                        deleteRequest(0,Diseases.class.getSimpleName());
                                     action= true;
                                     break;
                                 case R.id.popup_delete_last_entry:
                                     if(realmList.size()>0)
-                                        realmList.remove(realmList.size()-1);
+                                        deleteRequest(realmList.size()-1,Diseases.class.getSimpleName());
                                     action= true;
                                     break;
                             }
@@ -179,6 +181,18 @@ public class DoctorSetup extends Fragment {
                 });
             }
         });
+    }
+
+    private void deleteRequest(final int position, final String name) {
+        new Dialog().setTitle(name+" Delete Operation").setMessage("Are You Sure?").setAccept("Confirm").setCallback(new Callback<Object>() {
+            @Override
+            public void onCallback(Object send, boolean accept) {
+                if(accept) {
+                    if(name.equalsIgnoreCase(DiseaseSetup.class.getSimpleName()))
+                        doctor.getDiseases().remove(position);
+                }
+            }
+        }).show(getActivity().getSupportFragmentManager(),"");
     }
 
     private void showAlert(String message) {

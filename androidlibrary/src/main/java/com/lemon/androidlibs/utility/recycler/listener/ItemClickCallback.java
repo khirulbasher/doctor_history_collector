@@ -9,6 +9,7 @@ import com.lemon.androidlibs.utility.item.Item;
  * Created by lemon on 4/6/2018.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public interface ItemClickCallback {
     void onCallback(Item item, Why why);
     Class getRenderingClass();

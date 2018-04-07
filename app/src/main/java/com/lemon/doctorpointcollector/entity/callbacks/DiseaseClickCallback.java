@@ -14,6 +14,7 @@ import com.lemon.doctorpointcollector.utility.Utility;
  * Created by lemon on 4/6/2018.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class DiseaseClickCallback implements ItemClickCallback {
     private FragmentConversation conversation;
 
