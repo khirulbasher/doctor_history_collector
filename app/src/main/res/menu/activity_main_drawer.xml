@@ -22,6 +22,9 @@
                 <item android:title="@string/medical_college_setup"
                     android:id="@+id/nav_mc_setup"
                     android:icon="@drawable/ic_menu_manage"/>
+                <item android:title="@string/doctor_setup"
+                    android:id="@+id/nav_doctor_setup"
+                    android:icon="@drawable/ic_menu_manage"/>
             </group>
         </menu>
     </item>

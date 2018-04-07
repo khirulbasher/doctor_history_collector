@@ -6,5 +6,5 @@ package com.lemon.androidlibs.utility.enumeration;
 
 @SuppressWarnings("DefaultFileTemplate")
 public enum Why {
-    SHOW_TOAST, TOAST, FROM_LIST_VIEW, LOAD_FRAGMENT
+    SHOW_TOAST, TOAST, FROM_LIST_VIEW, SETUP, DETAILS, LOAD_FRAGMENT
 }

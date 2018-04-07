@@ -20,12 +20,13 @@ import com.lemon.doctorpointcollector.utility.Utility;
  * Created by lemon on 3/23/2018.
  */
 
-@SuppressWarnings({"DefaultFileTemplate", "unused", "FieldCanBeLocal"})
+@SuppressWarnings({"DefaultFileTemplate", "unused", "FieldCanBeLocal", "SameParameterValue"})
 public class DiseaseSetup extends Fragment {
     private View view;
     private EditText disease;
     private RealmDatabase realmDatabase;
     private Spinner spinner;
+    private Diseases diseasesSetup;
 
     @Nullable
     @Override
@@ -35,13 +36,34 @@ public class DiseaseSetup extends Fragment {
         view.findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                realmDatabase.persist(new Diseases(disease.getText().toString(),spinner.getSelectedItem().toString()));
-                clearScr("Disease Successfully Saved...");
+                if(!disease.getText().toString().isEmpty()) {
+                    diseasesSetup.setDisease(disease.getText().toString());
+                    diseasesSetup.setDiseaseType(spinner.getSelectedItem().toString());
+                    if(diseasesSetup.getId()==null)
+                        save(diseasesSetup);
+                    else update(diseasesSetup);
+                }
             }
         });
         realmDatabase=new RealmDatabase();
         spinner= Utility.initTypeSpinner(view,getActivity(), DiseaseType.values(),"Disease Type");
+        if(diseasesSetup!=null) {
+            disease.setText(diseasesSetup.getDisease());
+            spinner.setSelection(DiseaseType.valueOf(diseasesSetup.getDiseaseType()).ordinal());
+        }
+        else diseasesSetup=new Diseases();
         return view;
+    }
+
+    private void update(Diseases diseasesSetup) {
+        realmDatabase.update(diseasesSetup.getId(),diseasesSetup,diseasesSetup.getClass());
+        clearScr("Disease has been saved Successfully");
+    }
+
+    private void save(Diseases diseasesSetup) {
+        diseasesSetup.setId(System.currentTimeMillis());
+        realmDatabase.persist(diseasesSetup);
+        clearScr("Disease has been saved Successfully");
     }
 
     private void clearScr(@Nullable String msg) {

@@ -24,9 +24,11 @@ import android.widget.Toast;
 import com.lemon.androidlibs.R;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.androidlibs.fragment.view.FragmentCallback;
+import com.lemon.androidlibs.utility.Utility;
 import com.lemon.androidlibs.utility.enumeration.Why;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 import com.lemon.androidlibs.utility.fragment.Dialog;
+import com.lemon.androidlibs.utility.fragment.SimpleDialog;
 import com.lemon.androidlibs.utility.inf.Callback;
 import com.lemon.androidlibs.utility.recycler.RecyclerListener;
 import com.lemon.androidlibs.utility.recycler.RecyclerSearchAdapter;
@@ -52,6 +54,7 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
     private boolean verticalScroll=true;
     private ItemClickCallback itemClickCallback;
     private RealmDatabase realmDatabase;
+    private FragmentCallback fragmentCallback;
 
     @Nullable
     @Override
@@ -121,7 +124,7 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
 
     @Override
     public void onAttach(Context context) {
-        FragmentCallback fragmentCallback= (FragmentCallback) context;
+        fragmentCallback= (FragmentCallback) context;
         this.items=fragmentCallback.getItems();
         this.itemClickCallback=fragmentCallback.getListener();
         super.onAttach(context);
@@ -172,10 +175,36 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
                     * TODO: Firebase Persist All Item ...
                     * */
                 }
+                /*Send request to itemclickcallback and return fragment then it retrive the realm object for rendering...*/
+                else if(itemId==R.id.popup_edit) {
+                    try {
+                        fragmentCallback.showFragment(itemClickCallback.makeFragment(Why.SETUP),makeObjectFromProxy(realmDatabase.findOne(items.get(position).primaryKey,itemClickCallback.getRenderingClass())),Why.SETUP);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else if(itemId==R.id.popup_view) {
+                    fragmentCallback.showFragment(null,makeObjectFromProxy(realmDatabase.findOne(items.get(position).primaryKey,itemClickCallback.getRenderingClass())),Why.DETAILS);
+                }
                 return false;
             }
         });
         popupMenu.show();
+    }
+
+    /*Cause Proxy can access when the realm connection is open so we need to convert it to object*/
+    private Object makeObjectFromProxy(Object proxy) {
+        try {
+            return Utility.createObjectFromProxy(itemClickCallback.getRenderingClass(),proxy);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showDialog(e.getMessage());
+        }
+        return null;
+    }
+
+    private void showDialog(String message) {
+        new SimpleDialog().setMessage(message).show(getActivity().getSupportFragmentManager(),"");
     }
 
     @Override

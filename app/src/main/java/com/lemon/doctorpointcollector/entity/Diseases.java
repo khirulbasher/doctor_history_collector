@@ -1,5 +1,7 @@
 package com.lemon.doctorpointcollector.entity;
 
+import com.lemon.androidlibs.utility.item.ItemDescription;
+import com.lemon.androidlibs.utility.item.ItemTitle;
 import com.lemon.doctorpointcollector.entity.enumeration.DiseaseType;
 
 import io.realm.RealmObject;
@@ -13,9 +15,11 @@ import io.realm.annotations.PrimaryKey;
 public class Diseases extends RealmObject {
     @PrimaryKey
     private Long id;
+    @ItemTitle
     private String disease;
+    @ItemDescription
     private String diseaseType;
-    private boolean persisted;
+    private Boolean persisted;
 
     public Diseases() {
     }
@@ -53,11 +57,12 @@ public class Diseases extends RealmObject {
         this.diseaseType = diseaseType.name();
     }
 
-    public boolean isPersisted() {
+    public Boolean isPersisted() {
         return persisted;
     }
 
-    public void setPersisted(boolean persisted) {
+    public void setPersisted(Boolean persisted) {
         this.persisted = persisted;
     }
+
 }

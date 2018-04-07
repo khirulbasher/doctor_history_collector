@@ -40,4 +40,7 @@
     <string name="select_territory">Select Territory</string>
     <string name="website_url">Website Url</string>
     <string name="search">Search</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="sub">-</string>
+    <string name="doctor_setup">Doctor Setup</string>
 </resources>

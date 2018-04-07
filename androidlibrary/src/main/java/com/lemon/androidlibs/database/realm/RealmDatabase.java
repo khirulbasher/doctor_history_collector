@@ -6,7 +6,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
@@ -21,12 +20,6 @@ public class RealmDatabase {
     }
 
     public RealmObject persist(final RealmObject realmObject) {
-        try {
-            Method method=realmObject.getClass().getMethod("setId",Long.class);
-            method.invoke(realmObject,System.currentTimeMillis());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         this.realm.beginTransaction();
         final RealmObject object = realm.copyToRealm(realmObject);
         this.realm.commitTransaction();
@@ -61,5 +54,11 @@ public class RealmDatabase {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean update(Long pk,RealmObject realmObject, Class clazz) {
+        delete(clazz,pk);
+        persist(realmObject);
+        return true;
     }
 }

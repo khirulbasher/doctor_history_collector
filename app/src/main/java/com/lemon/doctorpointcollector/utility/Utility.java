@@ -62,8 +62,6 @@ public class Utility {
 
     public static Spinner initSpinner(Spinner division, final Context context, View parent) {
         final Spinner finalDistrict=parent.findViewById(R.id.district_spinner);
-        division=parent.findViewById(R.id.division_spinner);
-
         ArrayAdapter<String> divisionAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,getContinent().keySet().toArray(new String[0]));
         division.setAdapter(divisionAdapter);
         ArrayAdapter<String> districtAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,getContinent().get(division.getSelectedItem().toString()));

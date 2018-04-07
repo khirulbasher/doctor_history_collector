@@ -22,18 +22,22 @@ import com.lemon.androidlibs.concurrent.Task;
 import com.lemon.androidlibs.concurrent.TaskManager;
 import com.lemon.androidlibs.database.realm.RealmDatabase;
 import com.lemon.androidlibs.fragment.view.FragmentCallback;
+import com.lemon.androidlibs.fragment.view.FragmentConversation;
 import com.lemon.androidlibs.fragment.view.list.RecyclerViewFragment;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
+import com.lemon.androidlibs.utility.Utility;
+import com.lemon.androidlibs.utility.enumeration.Why;
+import com.lemon.androidlibs.utility.fragment.SimpleDialog;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.doctorpointcollector.entity.Diseases;
 import com.lemon.doctorpointcollector.entity.MedicalCollege;
 import com.lemon.doctorpointcollector.entity.callbacks.DiseaseClickCallback;
 import com.lemon.doctorpointcollector.entity.callbacks.MedicalCollegeClickCallback;
 import com.lemon.doctorpointcollector.entity.converter.DiseaseConverter;
-import com.lemon.androidlibs.fragment.view.FragmentConversation;
-import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.doctorpointcollector.entity.converter.MedicalCollegeConverter;
+import com.lemon.doctorpointcollector.fragments.callback.SetupCallback;
 import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
+import com.lemon.doctorpointcollector.fragments.setup.DoctorSetup;
 import com.lemon.doctorpointcollector.fragments.setup.MedicalCollegeSetup;
 
 import java.util.ArrayList;
@@ -45,18 +49,21 @@ import io.realm.RealmConfiguration;
 
 @SuppressWarnings({"unchecked", "ControlFlowStatementWithoutBraces", "unused", "SameParameterValue"})
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ClientCallback,FragmentCallback, FragmentConversation {
+        implements NavigationView.OnNavigationItemSelectedListener,ClientCallback,FragmentCallback, FragmentConversation,SetupCallback {
 
+    public static final String REALM_OBJECT = "REALM_OBJECT";
     private Handler handler;
     private List<Item> itemList;
     private String title;
     private ItemClickCallback itemClickCallback;
+    private Object renderingObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handler=new ClientHandler(this);
+
         Realm.init(this);
         RealmConfiguration realmConfiguration=new RealmConfiguration.Builder().name("doctors_point.realm").build();
         Realm.setDefaultConfiguration(realmConfiguration);
@@ -123,6 +130,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_mc_list:
                 fetchAll(new MedicalCollegeConverter(), MedicalCollege.class,new MedicalCollegeClickCallback(this));
+                break;
+            case R.id.nav_doctor_setup:
+                fragment=new DoctorSetup();
+                break;
         }
 
         if(fragment!=null)
@@ -154,7 +165,6 @@ public class MainActivity extends AppCompatActivity
 
     private void changeFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.addToBackStack("");
         fragmentTransaction.replace(R.id.main_content,fragment).commit();
     }
 
@@ -191,6 +201,29 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void showFragment(Fragment fragment, Object renderingObject,Why why) {
+        switch (why) {
+            case SETUP:
+                changeFragment(fragment);
+                break;
+            case DETAILS:
+                try {
+                    this.itemList = Utility.makeItemList(renderingObject);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    showDialog(e.getMessage());
+                }
+                changeFragment(new RecyclerViewFragment());
+                break;
+        }
+        this.renderingObject=renderingObject;
+    }
+
+    private void showDialog(String message) {
+        new SimpleDialog().setMessage(message).show(getSupportFragmentManager(),"");
+    }
+
+    @Override
     public void onConversation(Class entityClass, Why why, Map<Why, Object> whyObjectMap) {
         switch (why) {
             case SHOW_TOAST:
@@ -201,5 +234,15 @@ public class MainActivity extends AppCompatActivity
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public Object getRenderingObject() {
+        return renderingObject;
+    }
+
+    @Override
+    public void makeRenderingObjectNull() {
+        this.renderingObject=null;
     }
 }

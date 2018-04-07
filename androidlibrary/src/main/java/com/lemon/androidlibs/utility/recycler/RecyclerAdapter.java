@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 
 import com.lemon.androidlibs.R;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 
 import java.util.List;
 

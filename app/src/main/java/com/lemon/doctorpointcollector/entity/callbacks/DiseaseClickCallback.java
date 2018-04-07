@@ -1,10 +1,13 @@
 package com.lemon.doctorpointcollector.entity.callbacks;
 
-import com.lemon.androidlibs.utility.Item;
+import android.support.v4.app.Fragment;
+
+import com.lemon.androidlibs.utility.item.Item;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.androidlibs.fragment.view.FragmentConversation;
 import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.doctorpointcollector.entity.Diseases;
+import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
 import com.lemon.doctorpointcollector.utility.Utility;
 
 /**
@@ -27,4 +30,14 @@ public class DiseaseClickCallback implements ItemClickCallback {
     public Class getRenderingClass() {
         return Diseases.class;
     }
+
+    @Override
+    public Fragment makeFragment(Why why) throws Exception {
+        switch (why) {
+            case SETUP:
+                return new DiseaseSetup();
+                default: throw new Exception("Not a Valid Cause:"+why);
+        }
+    }
+
 }

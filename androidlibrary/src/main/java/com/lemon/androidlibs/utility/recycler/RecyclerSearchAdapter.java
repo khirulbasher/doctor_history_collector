@@ -9,7 +9,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.lemon.androidlibs.R;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +54,9 @@ public class RecyclerSearchAdapter extends RecyclerView.Adapter<RecyclerSearchAd
                 String filterText=String.valueOf(charSequence).toLowerCase();
                 if(filterText.isEmpty()) filterItems = mainItems;
                 else {
-                    String[] attr=filterText.split(" ");
                     filterItems=new ArrayList<>();
-
                     for(Item item:mainItems)
-                        if(item.searchable.contains(filterText)||(attr.length>1 && (item.searchable.contains(attr[0]) || item.searchable.contains(attr[1]))))
+                        if(item.searchable.contains(filterText)|| isContained(filterText.split(" "),item.searchable))
                             filterItems.add(item);
                 }
                 FilterResults filterResults=new FilterResults();
@@ -72,6 +70,12 @@ public class RecyclerSearchAdapter extends RecyclerView.Adapter<RecyclerSearchAd
                 notifyDataSetChanged();
             }
         };
+    }
+
+    private boolean isContained(String[] attrs, String searchable) {
+        for(String attr:attrs)
+            if(searchable.contains(attr)) return true;
+        return false;
     }
 
 

@@ -10,7 +10,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.lemon.androidlibs.R;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,13 +49,9 @@ public class FilterAdapter extends BaseAdapter implements Filterable {
     @SuppressLint("InflateParams")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder;
-        if(view==null) {
-            view = layoutInflater.inflate(R.layout.filter_item, null);
-            viewHolder=new ViewHolder(view);
-        }
-        else viewHolder= (ViewHolder) view.getTag();
-        viewHolder.textView.setText(items.get(i).title);
+        if(view==null)
+            view=layoutInflater.inflate(R.layout.filter_item,null);
+        ((TextView)view).setText(filteredItems.get(i).title);
 
         return view;
     }
@@ -66,12 +62,12 @@ public class FilterAdapter extends BaseAdapter implements Filterable {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String txt=String.valueOf(charSequence).toLowerCase();
-                if(txt.isEmpty()) filteredItems = items;
+                if(txt==null||txt.isEmpty()) filteredItems = items;
                 else {
                     String[] attr=txt.split(" ");
                     filteredItems=new ArrayList<>();
                     for(Item item:items)
-                        if(item.searchable.contains(txt) || attr.length>1 && (item.searchable.contains(attr[0]) || item.searchable.contains(attr[1])))
+                        if(item.searchable.contains(txt) || isContained(attr,item.searchable))
                             filteredItems.add(item);
                 }
                 FilterResults filterResults=new FilterResults();
@@ -87,12 +83,11 @@ public class FilterAdapter extends BaseAdapter implements Filterable {
         };
     }
 
-    @SuppressWarnings("WeakerAccess")
-    public static class ViewHolder{
-        public TextView textView;
-        ViewHolder(View view) {
-            textView= (TextView) view;
-        }
+    private boolean isContained(String[] attrs,String searchable) {
+        for(String attr:attrs)
+            if(searchable.contains(attr))
+                return true;
+        return false;
     }
 
     public List<Item> getFilteredItems() {

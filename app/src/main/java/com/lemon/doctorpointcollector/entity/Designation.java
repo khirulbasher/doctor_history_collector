@@ -15,7 +15,7 @@ public class Designation extends RealmObject {
     private Long id;
     private String designation;
     private String employeeType;
-    private boolean persisted;
+    private Boolean persisted;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class Designation extends RealmObject {
         this.employeeType = employeeType;
     }
 
-    public boolean isPersisted() {
+    public Boolean isPersisted() {
         return persisted;
     }
 
-    public void setPersisted(boolean persisted) {
+    public void setPersisted(Boolean persisted) {
         this.persisted = persisted;
     }
 }

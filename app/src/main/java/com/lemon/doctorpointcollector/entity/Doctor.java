@@ -1,5 +1,7 @@
 package com.lemon.doctorpointcollector.entity;
 
+import com.lemon.androidlibs.utility.item.ItemDescription;
+import com.lemon.androidlibs.utility.item.ItemTitle;
 import com.lemon.doctorpointcollector.entity.enumeration.EmployeeType;
 
 import io.realm.RealmList;
@@ -14,15 +16,20 @@ import io.realm.annotations.PrimaryKey;
 public class Doctor extends RealmObject {
     @PrimaryKey
     private Long id;
+    @ItemTitle
     private String name;
+    @ItemDescription
     private Designation designation;
     private RealmList<Diseases> diseases;
-    private Territory address;
+    private String district;
+    private String division;
+    private Double latitude;
+    private Double longitude;
     private RealmList<Contact> contacts;
     private RealmList<Clinic> clinics;
     private RealmList<Hospital> hospitals;
     private String employeeType;
-    private boolean persisted;
+    private Boolean persisted;
 
     public Long getId() {
         return id;
@@ -56,12 +63,36 @@ public class Doctor extends RealmObject {
         this.diseases = diseases;
     }
 
-    public Territory getAddress() {
-        return address;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setAddress(Territory address) {
-        this.address = address;
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public RealmList<Contact> getContacts() {
@@ -100,11 +131,11 @@ public class Doctor extends RealmObject {
         this.employeeType = employeeType;
     }
 
-    public boolean isPersisted() {
+    public Boolean isPersisted() {
         return persisted;
     }
 
-    public void setPersisted(boolean persisted) {
+    public void setPersisted(Boolean persisted) {
         this.persisted = persisted;
     }
 }

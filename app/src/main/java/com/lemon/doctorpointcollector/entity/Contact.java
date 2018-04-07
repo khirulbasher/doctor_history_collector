@@ -1,5 +1,8 @@
 package com.lemon.doctorpointcollector.entity;
 
+import com.lemon.androidlibs.utility.item.ItemDescription;
+import com.lemon.androidlibs.utility.item.ItemTitle;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -11,10 +14,12 @@ import io.realm.annotations.PrimaryKey;
 public class Contact extends RealmObject {
     @PrimaryKey
     private Long id;
+    @ItemTitle
     private String phone;
+    @ItemDescription
     private String mail;
     private String facebookId;
-    private boolean persisted;
+    private Boolean persisted;
 
     public Long getId() {
         return id;
@@ -48,11 +53,11 @@ public class Contact extends RealmObject {
         this.facebookId = facebookId;
     }
 
-    public boolean isPersisted() {
+    public Boolean isPersisted() {
         return persisted;
     }
 
-    public void setPersisted(boolean persisted) {
+    public void setPersisted(Boolean persisted) {
         this.persisted = persisted;
     }
 }

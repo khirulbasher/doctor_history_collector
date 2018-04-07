@@ -10,15 +10,18 @@ import io.realm.annotations.PrimaryKey;
  * Created by lemon on 3/23/2018.
  */
 
-@SuppressWarnings({"DefaultFileTemplate", "unused"})
+@SuppressWarnings({"DefaultFileTemplate", "unused", "WeakerAccess"})
 public class MedicalCollege extends RealmObject {
     @PrimaryKey
     private Long id;
     private String name;
-    private Territory territory;
+    private String district;
+    private String division;
+    private Double latitude;
+    private Double longitude;
     private String website;
     private String medicalCollegeType;
-    private boolean persisted;
+    private Boolean persisted;
 
     public Long getId() {
         return id;
@@ -36,13 +39,39 @@ public class MedicalCollege extends RealmObject {
         this.name = name;
     }
 
-    public Territory getTerritory() {
-        return territory;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setTerritory(Territory territory) {
-        this.territory = territory;
+    public void setDistrict(String district) {
+        this.district = district;
     }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+
 
     public String getWebsite() {
         return website;
@@ -63,15 +92,11 @@ public class MedicalCollege extends RealmObject {
         this.medicalCollegeType = medicalCollegeType.name();
     }
 
-    public boolean isValidObj() {
-        return name!=null&&medicalCollegeType!=null&&!name.isEmpty()&&!medicalCollegeType.isEmpty();
-    }
-
-    public boolean isPersisted() {
+    public Boolean isPersisted() {
         return persisted;
     }
 
-    public void setPersisted(boolean persisted) {
+    public void setPersisted(Boolean persisted) {
         this.persisted = persisted;
     }
 }

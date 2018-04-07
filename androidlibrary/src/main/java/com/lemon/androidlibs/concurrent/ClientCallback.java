@@ -3,7 +3,7 @@ package com.lemon.androidlibs.concurrent;
 
 
 
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 
 import java.util.List;
 import java.util.Map;

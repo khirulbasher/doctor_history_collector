@@ -1,7 +1,7 @@
 package com.lemon.doctorpointcollector.entity.converter;
 
 import com.lemon.androidlibs.concurrent.AbstractConverter;
-import com.lemon.androidlibs.utility.Item;
+import com.lemon.androidlibs.utility.item.Item;
 import com.lemon.doctorpointcollector.entity.MedicalCollege;
 
 /**

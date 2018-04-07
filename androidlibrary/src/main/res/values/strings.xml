@@ -6,4 +6,6 @@
     <string name="delete_item">Delete Item</string>
     <string name="upload_to_cloud">Upload To Cloud</string>
     <string name="upload_all_to_cloud">Upload All To Cloud</string>
+    <string name="edit">Edit</string>
+    <string name="view">View</string>
 </resources>
