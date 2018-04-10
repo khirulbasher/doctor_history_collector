@@ -22,7 +22,7 @@ public class Clinic extends RealmObject {
     private String division;
     private Double latitude;
     private Double longitude;
-    private RealmList<Doctor> doctors;
+    private RealmList<Long> doctors;
     private RealmList<Contact> contacts;
     @ItemDescription
     private String clinicType;
@@ -77,11 +77,11 @@ public class Clinic extends RealmObject {
         this.longitude = longitude;
     }
 
-    public RealmList<Doctor> getDoctors() {
+    public RealmList<Long> getDoctors() {
         return doctors;
     }
 
-    public void setDoctors(RealmList<Doctor> doctors) {
+    public void setDoctors(RealmList<Long> doctors) {
         this.doctors = doctors;
     }
 

@@ -70,7 +70,8 @@ public class RecyclerViewFragment extends Fragment implements ItemClickListener 
         this.recyclerAdapter=new RecyclerSearchAdapter(items);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
-        recyclerView.addOnItemTouchListener(new RecyclerListener.TouchListener(this,getContext(),recyclerView));
+        if(itemClickCallback!=null)
+            recyclerView.addOnItemTouchListener(new RecyclerListener.TouchListener(this,getContext(),recyclerView));
         return this.mainView;
     }
 

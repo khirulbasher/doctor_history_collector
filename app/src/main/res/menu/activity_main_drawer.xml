@@ -38,6 +38,9 @@
                 <item android:title="@string/medical_college"
                     android:icon="@drawable/ic_playlist_add_check_black_24dp"
                     android:id="@+id/nav_mc_list"/>
+                <item android:title="@string/doctor"
+                    android:icon="@drawable/ic_playlist_add_check_black_24dp"
+                    android:id="@+id/nav_doctor_list"/>
             </group>
         </menu>
     </item>

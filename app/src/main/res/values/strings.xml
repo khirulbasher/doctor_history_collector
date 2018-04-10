@@ -15,7 +15,7 @@
     <string name="tools">Tools</string>
     <string name="get_location">GET LOCATION</string>
     <string name="disease">Disease Name</string>
-    <string name="clinic_name">Clinic or Hospital Name</string>
+    <string name="clinic_name">Clinic Name</string>
     <string name="doctor_s_name">Doctor\'s Name</string>
     <string name="doctor_s_designation">Designation</string>
     <string name="doctor_for_disease">For Disease</string>
@@ -47,4 +47,9 @@
     <string name="delete_last_entry">Delete Last Entry</string>
     <string name="delete_first_entry">Delete First Entry</string>
     <string name="diseases">Diseases</string>
+    <string name="hospital">Hospital</string>
+    <string name="facebook">Facebook</string>
+    <string name="mail">E-Mail</string>
+    <string name="_0">0</string>
+    <string name="designation">Designation</string>
 </resources>

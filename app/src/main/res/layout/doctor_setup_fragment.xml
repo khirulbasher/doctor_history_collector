@@ -3,29 +3,87 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
-
-    <EditText
-        style="@style/text_field"
-        android:id="@+id/doc_name"
-        android:hint="@string/doctor_name"
-        />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="60sp"
-            android:id="@+id/disease_count"
-            android:text="0"
-            android:gravity="center"
-            style="@style/text_field"
-            android:layout_height="wrap_content" />
-        <AutoCompleteTextView
-            android:id="@+id/disease_auto"
-            android:layout_width="0sp"
-            android:layout_weight="1"
-            android:hint="@string/disease"
-            style="@style/text_field" />
-    </LinearLayout>
+        android:layout_weight="1"
+        android:layout_height="0sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <EditText
+                style="@style/text_field"
+                android:id="@+id/doc_name"
+                android:hint="@string/doctor_name"
+                />
+            <include layout="@layout/type_spinner"/>
+            <AutoCompleteTextView
+                android:id="@+id/designation_auto"
+                android:hint="@string/designation"
+                style="@style/text_field" />
+            <AutoCompleteTextView
+                android:id="@+id/mc_auto"
+                android:hint="@string/medical_college"
+                style="@style/text_field" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="60sp"
+                    android:id="@+id/disease_count"
+                    android:text="@string/_0"
+                    android:gravity="center"
+                    style="@style/text_field"
+                    android:layout_height="wrap_content" />
+                <AutoCompleteTextView
+                    android:id="@+id/disease_auto"
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:hint="@string/disease"
+                    style="@style/text_field" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="60sp"
+                    android:id="@+id/clinic_count"
+                    android:text="@string/_0"
+                    android:gravity="center"
+                    style="@style/text_field"
+                    android:layout_height="wrap_content" />
+                <AutoCompleteTextView
+                    android:id="@+id/clinic_auto"
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:hint="@string/clinic_name"
+                    style="@style/text_field" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="60sp"
+                    android:id="@+id/hospital_count"
+                    android:text="@string/_0"
+                    android:gravity="center"
+                    style="@style/text_field"
+                    android:layout_height="wrap_content" />
+                <AutoCompleteTextView
+                    android:id="@+id/hospital_auto"
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:hint="@string/hospital"
+                    style="@style/text_field" />
+            </LinearLayout>
+            <include layout="@layout/spinners"/>
+            <include layout="@layout/contact_layout"/>
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/save_button"/>
 </LinearLayout>

@@ -30,10 +30,13 @@ import com.lemon.androidlibs.utility.enumeration.Why;
 import com.lemon.androidlibs.utility.fragment.SimpleDialog;
 import com.lemon.androidlibs.utility.recycler.listener.ItemClickCallback;
 import com.lemon.doctorpointcollector.entity.Diseases;
+import com.lemon.doctorpointcollector.entity.Doctor;
 import com.lemon.doctorpointcollector.entity.MedicalCollege;
 import com.lemon.doctorpointcollector.entity.callbacks.DiseaseClickCallback;
+import com.lemon.doctorpointcollector.entity.callbacks.DoctorClickCallback;
 import com.lemon.doctorpointcollector.entity.callbacks.MedicalCollegeClickCallback;
 import com.lemon.doctorpointcollector.entity.converter.DiseaseConverter;
+import com.lemon.doctorpointcollector.entity.converter.DoctorConverter;
 import com.lemon.doctorpointcollector.entity.converter.MedicalCollegeConverter;
 import com.lemon.doctorpointcollector.fragments.callback.SetupCallback;
 import com.lemon.doctorpointcollector.fragments.setup.DiseaseSetup;
@@ -134,6 +137,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_doctor_setup:
                 fragment=new DoctorSetup();
                 break;
+            case R.id.nav_doctor_list:
+                fetchAll(new DoctorConverter(), Doctor.class,new DoctorClickCallback(this));
         }
 
         if(fragment!=null)
@@ -165,6 +170,7 @@ public class MainActivity extends AppCompatActivity
 
     private void changeFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.addToBackStack("");
         fragmentTransaction.replace(R.id.main_content,fragment).commit();
     }
 
@@ -210,11 +216,12 @@ public class MainActivity extends AppCompatActivity
             case DETAILS:
                 try {
                     this.itemList = Utility.makeItemList(renderingObject);
+                    itemClickCallback=null;
+                    changeFragment(new RecyclerViewFragment());
                 } catch (Exception e) {
                     e.printStackTrace();
                     showDialog(e.getMessage());
                 }
-                changeFragment(new RecyclerViewFragment());
                 break;
         }
     }
